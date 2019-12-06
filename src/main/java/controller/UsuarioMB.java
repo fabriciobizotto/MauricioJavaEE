@@ -54,19 +54,8 @@ public class UsuarioMB {
       facesContext.addMessage(null, facesMessage);
     }
   }
-  
-  public void prepararEditar(Usuarios usuario) {
-    try {
-      System.out.println(usuario);
-      this.usuario = usuario;
-    } catch (Exception ex) {
-      FacesContext facesContext = FacesContext.getCurrentInstance();
-      FacesMessage facesMessage = new FacesMessage(ex.getMessage());
-      facesContext.addMessage(null, facesMessage);
-    }
-  }
 
-  private void limpar() {
+  public void limpar() {
     usuario = new Usuarios();
     usuario.setDthrcadastro(new Date());
   }

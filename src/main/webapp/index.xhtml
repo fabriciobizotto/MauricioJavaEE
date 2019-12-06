@@ -10,8 +10,8 @@
         <h:messages />
         <h:form id="form">
             <h:panelGrid columns="2">
-                <h:outputLabel value="ID:" />
-                <h:outputText value="#{usuarioMB.usuario.id}" />
+                <h:outputLabel value="ID:" rendered="#{usuarioMB.usuario.id != null}" />
+                <h:outputText value="#{usuarioMB.usuario.id}" rendered="#{usuarioMB.usuario.id != null}" />
                 <h:outputLabel value="Nome:" />
                 <h:inputText value="#{usuarioMB.usuario.nome}" required="true" />
                 <h:outputLabel value="E-mail:" />
@@ -19,8 +19,14 @@
                 <h:outputLabel value="Senha:" />
                 <h:inputSecret value="#{usuarioMB.usuario.senha}" required="true" />
                 <h:outputLabel value="" />
-                <h:commandButton value="Cadastrar" action="#{usuarioMB.salvar()}" />
+                <h:panelGroup>
+                    <h:commandButton value="Cadastrar" action="#{usuarioMB.salvar()}" />
+                    <h:commandButton value="Limpar" action="#{usuarioMB.limpar()}" immediate="true">
+                        <f:ajax render="@form" execute="@this" />
+                    </h:commandButton>
+                </h:panelGroup>
             </h:panelGrid>
+            <hr />
 
 
             <h:dataTable value="#{usuarioMB.lista}" var="item" border="1" id="lista">
@@ -34,9 +40,9 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Ações</f:facet>
-                    <h:commandButton value="Editar" action="#{usuarioMB.prepararEditar(item)}" immediate="true">
+                    <h:commandButton value="Editar" immediate="true">
                         <f:setPropertyActionListener value="#{item}" target="#{usuarioMB.usuario}" />
-                        <!--<f:ajax execute="@form" render="@form"  />-->
+                        <f:ajax render="@form" execute="@this" />
                     </h:commandButton>
                     <h:commandButton value="Excluir" action="#{usuarioMB.excluir()}" immediate="true">
                         <f:setPropertyActionListener value="#{item}" target="#{usuarioMB.usuario}" />

@@ -102,8 +102,8 @@ public class Usuarios implements Serializable {
     return senha;
   }
 
-  public void setSenha(String senha) {
-    this.senha = senha;
+  public void setSenha(String senha) throws Exception {
+    this.senha = utils.Utils.textoParaMd5(senha);
   }
 
   public String getNome() {
