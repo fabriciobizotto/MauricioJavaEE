@@ -7,7 +7,7 @@ Exemplo Projeto JSF EJB JPA MYSQL
 
 ## SQL - MySQL
  - Executar o seguinte comando:
-`
+```
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `email` varchar(255) NOT NULL UNIQUE,
@@ -15,6 +15,6 @@ CREATE TABLE `usuarios` (
   `nome` text NOT NULL,
   `dthrcadastro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 );
-`
+```
 
 ### Rodar e testar
